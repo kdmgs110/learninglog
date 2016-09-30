@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+  <div class="col-md-12">
+    <p>
+      <strong>Title:</strong>
+      <%= @form.title %>
+    </p>
+  </div>
+  <div class="col-md-12">
+    <p>
+      <strong>Comment:</strong>
+      <iframe srcdoc="<%= @form.comment %>" id="commentFrame" frameborder="0" height="500" width="100"></iframe>
+  </p>
+  </div>
+  <div class="col-md-12">
+    <%= link_to 'Edit', edit_form_path(@form) %> |
+    <%= link_to 'Back', forms_path %>
+  </div>
+</div>
+
+<script>
+ $(document).ready(function(){
+  $('iframe').autosize();
+});
+</script>
+
+

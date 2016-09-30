@@ -1,0 +1,14 @@
+  <% @forms.each do |form| %>
+    <div class="container">
+      <div class="row">
+          <div class="col-md-10 col-md-offset-1"><h3><%= form.title %></h3></div>
+          <div class="col-md-10 col-md-offset-1"><h3><%= form.date %></h3></div>
+          <div class="col-md-10 col-md-offset-1"><iframe srcdoc="<%= form.comment %>"></iframe></div>
+      </div>
+      <div class="row">
+        <div class="col-md-4"><%= link_to 'Show', form %></div>
+        <div class="col-md-4"><%= link_to 'Edit', edit_form_path(form) %></div>
+        <div class="col-md-4"><%= link_to 'Destroy', form, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+      </div>
+      </div>
+  <% end %>
