@@ -2,13 +2,17 @@
   <div class="container navbar navbar-fixed-top">
      <span class="pull-left"><%= link_to "My Coding Day", root_path,id:"logo" %></span>
      <ul class="list-inline pull-right">
-      <%= search_form_for @q do |f| %>
-        <li><%= f.label :comment_cont, "検索" %>
-        <%= f.search_field :comment_cont %>
-         <%= f.submit %>
-        </li>
-      <% end %>
-        <li><%= link_to 'New Form',new_form_path,class:"btn btn-primary" %></li>
+     <% if user_signed_in? %>
+       <%= link_to 'Log Out', destroy_user_session_path,method: :delete %>
+          <%= search_form_for @q do |f| %>
+            <li><%= f.label :comment_cont, "検索" %></li>
+            <li><%= f.search_field :comment_cont %></li>
+            <li><%= f.submit %></li>
+          <% end %>
+        <li><%= link_to '新規投稿',new_form_path,class:"btn btn-primary" %></li>
+      <% else %>
+          <li><%= link_to '新規登録',new_user_registration_path %></li>
+     <% end %>
       </ul>
 </header>
   

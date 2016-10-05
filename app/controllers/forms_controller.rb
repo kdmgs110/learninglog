@@ -1,3 +1,5 @@
+#forms_controller
+
 class FormsController < ApplicationController
   before_action :set_form, only: [:show, :edit, :update, :destroy]
 
@@ -5,21 +7,24 @@ class FormsController < ApplicationController
   # GET /forms.json
   def index
     @q = Form.search(params[:q])
-    @forms = @q.result(distinct: true)
+    @forms = @q.result(distinct: true).order("Created_at DESC")
   end
 
   # GET /forms/1
   # GET /forms/1.json
   def show
+     @q = Form.search(params[:q])
   end
 
   # GET /forms/new
   def new
+    @q = Form.search(params[:q])
     @form = Form.new
   end
 
   # GET /forms/1/edit
   def edit
+     @q = Form.search(params[:q])
   end
 
   # POST /forms
@@ -29,8 +34,9 @@ class FormsController < ApplicationController
 
     respond_to do |format|
       if @form.save
-        format.html { redirect_to @form, notice: 'Form was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Form was successfully created.' }
         format.json { render :show, status: :created, location: @form }
+       
       else
         format.html { render :new }
         format.json { render json: @form.errors, status: :unprocessable_entity }

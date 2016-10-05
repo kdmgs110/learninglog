@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+gem 'carrierwave'
+gem 'devise'
 gem 'ransack'
 gem "font-awesome-rails"
 gem 'autosize-rails'
