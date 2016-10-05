@@ -4,7 +4,8 @@ class FormsController < ApplicationController
   # GET /forms
   # GET /forms.json
   def index
-    @forms = Form.all
+    @q = Form.search(params[:q])
+    @forms = @q.result(distinct: true)
   end
 
   # GET /forms/1

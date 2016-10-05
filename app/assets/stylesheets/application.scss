@@ -2,20 +2,55 @@
 @import"bootstrap";
 
 /* universal */
-
+*{
+    margin:0 auto;
+}
 body{
     margin:0 auto;
     margin-top:100px;
 }
+a{
+    text-decoration:none;
+}
 /* header */
 header .container{
-    background-color:black;
-    color:white;
+    background-color:#cfcfcf;
+    color:black;
     width:100%;
+    padding-top:10px;
+}
+#logo{
+    text-decoration:none;
+    color:white;
+}
+.white{
+    color:white;
 }
 
 iframe{
     width:100%;
+}
+
+/* belowHeader */
+
+
+/* post */
+.post{
+    padding:50px 0;
+    margin:100px 0;
+    border-top:1px solid grey;
+    border-bottom:1px solid grey;
+}
+
+/* forms */
+.title{
+    border:#ccc;
+}
+.content{
+    background-color:grey;
+}
+.selector{
+    float:right;
 }
 
 
@@ -36,4 +71,5 @@ iframe{
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */

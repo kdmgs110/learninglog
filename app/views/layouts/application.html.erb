@@ -8,13 +8,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="container belowHeader">
 <%= render 'layouts/header' %>
 <%= yield %>
+  </div>
 
-
-
-
-
-
+<script>
+$(document).ready(function(){
+  $('iframe').autosize();
+});
+</script>
 </body>
 </html>

@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+gem 'ransack'
+gem "font-awesome-rails"
 gem 'autosize-rails'
 gem 'bootstrap-sass'
 gem 'devise'
