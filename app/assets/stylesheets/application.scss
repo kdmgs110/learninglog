@@ -31,6 +31,13 @@ iframe{
     width:100%;
 }
 
+.navi-menu li{
+    display:inline-block;
+}
+.list-inline{
+    display:inline-block;
+}
+
 /* belowHeader */
 
 
@@ -47,7 +54,6 @@ iframe{
     border:#ccc;
 }
 .content{
-    background-color:grey;
 }
 .selector{
     float:right;

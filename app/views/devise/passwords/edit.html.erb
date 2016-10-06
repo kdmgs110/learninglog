@@ -16,6 +16,11 @@
     <%= f.label :password_confirmation, "Confirm new password" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
+  
+   <div class="field">
+    <%= f.label 'Profile Picture' %><br>
+    <%= f.file_field :photo %>
+  </div>
 
   <div class="actions">
     <%= f.submit "Change my password" %>

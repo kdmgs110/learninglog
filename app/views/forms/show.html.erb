@@ -3,7 +3,7 @@
       <%= @form.title %>
     </div>
     <div class="content">
-      <iframe srcdoc="<%= @form.comment %>" id="commentFrame" scrolling="no" frameborder="0" height="500" width="100"></iframe>
+      <iframe srcdoc="<%= @form.comment %>" id="commentFrame" frameborder="0" height="500" width="100"></iframe>
     </div>
     <div>
     <%= link_to 'Edit', edit_form_path(@form) %> |
