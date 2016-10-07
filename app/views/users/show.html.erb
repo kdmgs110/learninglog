@@ -1,4 +1,7 @@
-<% @user.each do |user| %>
-   <%= user.form.title %>
+<h1><%= @user.name %></h1>
+<p>ノート数:<%= @user.forms.count %></p>
+
+<%= @user.each do |user| %>
+    <%= user.title %>
 <% end %>
 

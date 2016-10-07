@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    puts "@@@@@@@@@@@@@@@@@@@@@"
     @user = User.find(params[:id])
+    @forms = Form.all
   end
 end
