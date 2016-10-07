@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 gem 'carrierwave'
-#gem 'rmagick'
-#gem 'mini_magick'
+
 gem 'devise'
 gem 'ransack'
 gem "font-awesome-rails"

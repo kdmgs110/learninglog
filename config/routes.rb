@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
+  get 'users/show'
+
+  get 'user/show'
+
   mount Ckeditor::Engine => '/ckeditor'
   get 'static_pages/index'
 
   devise_for :users
   resources :forms
+  resources :users, only: :show
   
   root 'forms#index'
   # The priority is based upon order of creation: first created -> highest priority.
