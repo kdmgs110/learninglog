@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :forms
   resources :users, only: :show
-  
+  resources :understands, only:[:create, :destroy]
   root 'forms#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

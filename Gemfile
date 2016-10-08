@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
+gem 'simple_form'
+gem 'acts_as_votable', '~> 0.10.0'
 gem 'carrierwave'
-
 gem 'devise'
 gem 'ransack'
 gem "font-awesome-rails"
