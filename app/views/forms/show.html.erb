@@ -1,14 +1,39 @@
 <div class="container">
     <div class="title">
+      <% if  @form.user.photo.present? %>
+        <%= image_tag @form.user.photo.url,class:"user_photo" %>
+      <% else %>
+        <%= image_tag 'nouser.png',class:"user_photo" %>
+      <% end %>
+        
+      <%= @form.user.name %>
       <%= @form.title %>
+      <p><%= time_ago_in_words @form.created_at %>前に投稿</p>
     </div>
     <div class="content">
-      <iframe srcdoc="<%= @form.comment %>" id="commentFrame" frameborder="0" height="500" width="100"></iframe>
+      <iframe srcdoc="<%= @form.comment %>" id="commentFrame"  height="500" width="100"></iframe>
     </div>
     <div>
     <%= link_to 'Edit', edit_form_path(@form) %> |
     <%= link_to 'Back', forms_path %>
     </div>
+    <% @form.replies.each do |reply| %>
+      <p><%= reply.user.name %></p>
+        <% if  reply.user.photo.present? %>
+              <div class="col-md-10 col-md-offset-1"><%= image_tag reply.user.photo.url,class:"user_photo" %></div>
+        <% else %>
+             <div class="col-md-10 col-md-offset-1"><%= image_tag 'nouser.png',class:"user_photo" %></div>
+        <% end %>
+        
+      <iframe srcdoc="<%= reply.content %>" id="commentFrame"  height="500" width="100"></iframe>
+    <% end %>
+    
+    <%= form_for Reply.new, url: form_replies_path(@form), method: :post do |f| %>
+      <%= f.cktext_area :content %>
+      <%= f.submit 'コメントする' %>
+    <% end %>
+    
+  
 </div>
 
 

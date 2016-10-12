@@ -5,13 +5,11 @@ class FormsController < ApplicationController
   before_filter :set_search
   before_action :authenticate_user!, only: [:new, :create]
   before_action :is_owener?, only: [:edit, :update]
-  
+
 
   # GET /forms
   # GET /forms.json
   def index
-    puts "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
-    puts params[:q]
     @q = Form.search(params[:q])
     @forms = @q.result(distinct: true).order("Created_at DESC")
   end
@@ -31,16 +29,12 @@ class FormsController < ApplicationController
   end
 
   def edit
-      puts 'WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW'
-      puts params[:id]
-      #@q = Form.search
       @form = Form.find(params[:id])
   end
 
   # POST /forms
   # POST /forms.json
   def create
-    #@form = Form.new(form_params)
     @form = current_user.forms.create(form_params)
     respond_to do |format|
       if @form.save

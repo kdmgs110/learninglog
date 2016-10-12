@@ -3,10 +3,17 @@
      <span class="col-md-4"><%= link_to "My Coding Day", root_path,id:"logo" %></span>
      <ul class="col-md-8 navi-menu">
      <% if user_signed_in? %>
-            <li><%= current_user.name %></li>
+            <li><%= link_to user_path(current_user),class:"header_icon" do %><i class="fa fa-user" aria-hidden="true"></i><% end %></li>
+            <% if current_user.photo.present? %>
+            <li><%= image_tag current_user.photo.url,class:'header_image' %></li>
+            <% else %>
+                <%= image_tag 'nouser.png',class:"header_image" %>
+            <% end %>
+            <li><%= link_to forms_path,class:"header_icon" do %><i class="fa fa-newspaper-o" aria-hidden="true"></i><% end %></li>
+            <li><%= link_to users_path,class:"header_icon" do %><i class="fa fa-user-plus" aria-hidden="true"></i><% end %></li>
             <li><%= link_to '編集', edit_user_registration_path %></liser>
             <li><%= link_to 'ログアウト',destroy_user_session_path, method: :delete %></li>
-            <li><%= link_to '新規投稿',new_form_path,class:"btn btn-primary" %></li>
+            <li><%= link_to new_form_path,class:"header_icon" do %><i class="fa fa-pencil" aria-hidden="true"></i><% end %></li>
       <% else %>
           <li><%= link_to '新規登録',new_user_registration_path %></li>
           <li><%= link_to 'ログイン',new_user_session_path %></li>

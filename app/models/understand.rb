@@ -1,3 +1,4 @@
 class Understand < ActiveRecord::Base
-    belongs_to :forms, :users
+    belongs_to :form
+    belongs_to :user
 end

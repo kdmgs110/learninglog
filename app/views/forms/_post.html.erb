@@ -1,25 +1,33 @@
 <% @forms.each do |form| %>
     <div class="container post">
       <div class="row">
-          <div class="col-md-10 col-md-offset-1"><h3><%= form.title %></h3></div>
           <div class="col-md-10 col-md-offset-1"><p><%= link_to form.user.name,user_path(form.user_id)%></p></div>
-          <div class="col-md-10 col-md-offset-1"><p><%= form.created_at %></p></div>
-          <div class="col-md-10 col-md-offset-1"><iframe srcdoc="<%= form.comment %>"></iframe></div>
+          <% if  form.user.photo.present? %>
+            <div class="col-md-10 col-md-offset-1"><%= image_tag form.user.photo.url,class:"user_photo" %></div>
+          <% else %>
+           <div class="col-md-10 col-md-offset-1"><%= image_tag 'nouser.png',class:"user_photo" %></div>
+          <% end %>
+            <div class="col-md-10 col-md-offset-1"><h3><%= link_to form.title,form %></h3></div>
+          
+          <div class="col-md-10 col-md-offset-1"><p><%= time_ago_in_words form.created_at %>前に投稿</p></div>
+          <div class="col-md-10 col-md-offset-1"><iframe srcdoc="<%= form.comment %>" height="400"></iframe></div>
           
       </div>
       <% if current_user == form.user %> <%#　選んだフォームがフォーム作成者のとき %>
           <div class="selector">
-             <%= link_to '詳細', form,class:'btn btn-success'%>
              <%= link_to '編集', edit_form_path(form),class:'btn btn-primary'%>
             <%= link_to '消去', form, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %>
-        　<% if form.understand.present? %>
-            <button>理解</button> <%#このリンクを押すと、ポストに紐づいた@understandがdestroyされ,nilになる %>
+        　<% if form.understands.present? %>
+            <%= link_to "理解", form_understand_path(form_id: form.id, id: form.understand.id), method: :delete %> <%#このリンクを押すと、ポストに紐づいた@understandがdestroyされ,nilになる %>
+            <%# <%= link_to 'Delete', post_comment_path(post_id: post.id, id: comment.id), method: :delete %>
           <% else %>
-            <button>助けて</button><%#このボタンを押すと、ポストに紐づいた@understandがcreateされ,presentになる %>
-        <% end %>
+            <%= form_for Understand.new, url: form_understands_path(form), method: :post do |f| %>
+              <%= f.number_field :number %>
+              <%= f.submit '質問にご協力お願いします。',class:'btn btn-primary' %>
+            <% end %>
+          <% end %>
       <% else %> <%#　ポストが作成者ではないとき %>
-          <%= link_to 'Show', form,class:'btn btn-success'%>
-          <% if form.understand.present? %>
+          <% if form.understands.present? %>
             <button>理解</button> <%# 編集できずに、ただ表示されているだけ表示されているだけ %>
           <% else %>
             <button>助けて</button> <%# 編集できずに、ただ表示されているだけ表示されているだけ %>
@@ -28,3 +36,4 @@
             </div>
         </div>
   <% end %>
+

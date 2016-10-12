@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161008041109) do
+ActiveRecord::Schema.define(version: 20161012091918) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",               null: false
@@ -29,6 +29,19 @@ ActiveRecord::Schema.define(version: 20161008041109) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type"
 
+  create_table "follows", force: :cascade do |t|
+    t.integer  "followable_id",                   null: false
+    t.string   "followable_type",                 null: false
+    t.integer  "follower_id",                     null: false
+    t.string   "follower_type",                   null: false
+    t.boolean  "blocked",         default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "follows", ["followable_id", "followable_type"], name: "fk_followables"
+  add_index "follows", ["follower_id", "follower_type"], name: "fk_follows"
+
   create_table "forms", force: :cascade do |t|
     t.string   "title"
     t.text     "comment"
@@ -42,13 +55,29 @@ ActiveRecord::Schema.define(version: 20161008041109) do
 
   add_index "forms", ["user_id"], name: "index_forms_on_user_id"
 
-  create_table "understands", force: :cascade do |t|
-    t.integer  "understand_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+  create_table "replies", force: :cascade do |t|
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "form_id"
   end
 
+  add_index "replies", ["form_id"], name: "index_replies_on_form_id"
+  add_index "replies", ["user_id", "form_id"], name: "index_replies_on_user_id_and_form_id"
+
+  create_table "understands", force: :cascade do |t|
+    t.integer  "understand_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "form_id"
+    t.integer  "user_id"
+    t.integer  "number",        default: 1
+  end
+
+  add_index "understands", ["form_id"], name: "index_understands_on_form_id"
   add_index "understands", ["understand_id"], name: "index_understands_on_understand_id"
+  add_index "understands", ["user_id", "form_id"], name: "index_understands_on_user_id_and_form_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

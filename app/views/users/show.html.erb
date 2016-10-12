@@ -1,11 +1,51 @@
-<h1><%= @user.name %></h1>
-<p>ノート数:<%= @user.forms.count %></p>
+<% if @users.photo? %>
+　　<%= image_tag @users.photo.url,class:"user_photo" %>
+　<% else %>
+　　<%= image_tag 'nouser.png' %>
+　<% end %>
 
-<% @user.forms.each do |user| %>
+<h1><%= @users.name %></h1>
+<% if current_user != @users　%>
+   <% if current_user.following?(@users) %>
+    <%= link_to "Unfollow", unfollow_user_path(@users) %>
+   <% else %>
+    <%= link_to "Follow", follow_user_path(@users) %>
+   <% end %>
+<% end %>
+
+ <% if current_user == @users %> <%# プロフィールを編集できる %>
+  <%= form_for @users do |f| %>
+    
+    <%= f.label :"学習項目" %>
+    <%= f.text_area :profession %>
+    
+    <%= f.label :"自己紹介" %>
+    <%= f.text_area :intro %>
+    <%= f.submit %>
+  <% end %>  
+ <% else %> <%# プロフィールは見るだけ %>
+  <h3>学習項目</h3>
+  <p><%= @users.profession %></p>
+  <h3>自己紹介</h3>
+  <p><%= @users.intro %></p>
+<% end %>
+<p>ノート数:<%= @users.forms.count %></p>
+
+<h3>フォロー数:<%= @users.follow_count%></h3>
+<% @users.all_following.each do |user| %>
+ <%= image_tag user.photo.url,class:"micro-photo" %>
+<% end %>
+
+<h3>フォロワー数:<%= @users.followers_count%></h3>
+<% @users.followers.each do |user| %>
+ <%= image_tag user.photo.url,class:"micro-photo" %>
+<% end %>
+
+<% @users.forms.each do |user| %>
  <div class="container post">
       <div class="row">
           <div class="col-md-10 col-md-offset-1"><h3><%= user.title %></h3></div>
-          <div class="col-md-10 col-md-offset-1"><p><%= user.created_at %></p></div>
+          <div class="col-md-10 col-md-offset-1"><p><%= time_ago_in_words user.created_at %>前に投稿</p></div>
           <div class="col-md-10 col-md-offset-1"><iframe srcdoc="<%= user.comment %>"></iframe></div>
       </div>
  </div>

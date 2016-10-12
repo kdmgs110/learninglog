@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import"bootstrap";
+@import "font-awesome";
 
 /* universal */
 *{
@@ -37,6 +38,21 @@ iframe{
 .list-inline{
     display:inline-block;
 }
+.header_image{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+}
+.header_icon{
+    font-size:30px;
+}
+header .li{
+    margin-left:30px;
+}
+
+header .ul{
+    margin-left:30px;
+}
 
 /* belowHeader */
 
@@ -60,8 +76,22 @@ iframe{
 }
 
 
+/* user profile */
+.micro-photo{
+    width:50px;
+    height:50px;
+}
 
+/* user_profile */
 
+.micro_photo{
+    width:30px;
+    height:30px;
+}
+.user_photo{
+    width:100px;
+    height:100px;
+}
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
@@ -78,4 +108,6 @@ iframe{
  *= require_tree .
  *= require_self
  *= require font-awesome
+ *= require syntax-highlighter-rails/shCore
+ *= require syntax-highlighter-rails/shThemeDefault
  */

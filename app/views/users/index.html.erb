@@ -1,0 +1,27 @@
+<h1>ユーザー検索</h1>
+  <%= search_form_for @q do |f| %>
+      <%= f.label :name_cont, "ユーザー検索"%><%= f.search_field :name_cont %>
+      <%= f.submit %>
+      
+      <%= f.label :profession_cont, "学習項目から検索"%><%= f.search_field :profession_cont %>
+      <%= f.submit %>
+
+  <% end %>
+  
+<% @users.each do |user| %>
+    <div class="col-md-10 col-md-offset-1"><p><%= link_to user.name,user_path(user)%></p></div>
+        <% if user.photo.present? %>
+            <div class="col-md-10 col-md-offset-1"><%= image_tag user.photo.url,class:"user_photo" %></div>
+        <% else %>
+            <div class="col-md-10 col-md-offset-1"><%= image_tag 'nouser.png',class:"user_photo" %></div>
+        <% end %>
+    <% if current_user != user %>
+        <% if current_user.following?(user) %>
+            <div class="col-md-10 col-md-offset-1"><%= link_to "Unfollow", unfollow_user_path(user) %></div>
+        <% else %>
+            <div class="col-md-10 col-md-offset-1"><%= link_to "Follow", follow_user_path(user) %></div>
+       <% end %>
+    <% end %> 
+<% end %>
+
+           

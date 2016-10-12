@@ -5,5 +5,12 @@
   <% end %>
   <%= render 'post' %>
 <% else %>
-  <h1>Welcome to Study App</h1>
+<div class="col-md-10 col-md-offset-1" >
+  <h1>Coder Community</h1>
+  <p>CODER COMMUNITYへようこそ。ここでは、友人のエンジニアに技術的な質問や、学習記録を共有することができます。</br>
+  </p>
+</div>
+<div class="col-md-10 col-md-offset-1" ><%= link_to '新規登録',new_user_registration_path,class:"btn btn-primary" %></div>
+  
+  
 <% end %>

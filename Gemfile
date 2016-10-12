@@ -1,4 +1,10 @@
 source 'https://rubygems.org'
+gem "acts_as_follower"
+gem 'rails-i18n'
+gem 'rmagick'
+gem 'mini_magick'
+gem 'fog'
+gem 'syntax-highlighter-rails'
 gem 'simple_form'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'carrierwave'
@@ -7,7 +13,7 @@ gem 'ransack'
 gem "font-awesome-rails"
 gem 'autosize-rails'
 gem 'bootstrap-sass'
-gem 'ckeditor'
+gem 'ckeditor', git: 'https://github.com/galetahub/ckeditor', branch: 'master'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record

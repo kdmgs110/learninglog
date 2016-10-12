@@ -12,32 +12,48 @@
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
+   <div class="field">
+    <%= f.label :"現在のパスワード"%><br />
+    <%= f.password_field :current_password, autocomplete: "off" %>
+  </div>
+  
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.label :"新しいパスワード" %> <i>(必要がなければ空白でもかまいません）</i><br />
     <%= f.password_field :password, autocomplete: "off" %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <em><%= @minimum_password_length %> 文字は必要です。</em>
     <% end %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :"新しいパスワード(確認)" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
-
+  
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
+    <%= f.label :"学習中" %><br />
+    <%= f.text_area :profession %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :"自己紹介" %><br />
+    <%= f.text_area :intro %>
+  </div>
+
+  
+  <div class="field">
+  <%= f.label 'プロフィール写真' %><br>
+  <%= f.file_field :photo %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "更新する" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<h3>アカウントの凍結</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>

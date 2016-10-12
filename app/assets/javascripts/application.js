@@ -4,4 +4,7 @@
 //= require jquery.autosize
 //= require turbolinks
 //= require_tree
+//= require syntax-highlighter-rails/shCore
+//= require syntax-highlighter-rails/shBrushCpp
 //= require ckeditor/init
+//= require ckeditor/config

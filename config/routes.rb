@@ -1,16 +1,24 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   get 'users/show'
-
   get 'user/show'
 
-  mount Ckeditor::Engine => '/ckeditor'
+
   get 'static_pages/index'
 
   devise_for :users
-  resources :forms
-  resources :users, only: :show
-  resources :understands, only:[:create, :destroy]
+  resources :users do
+    member do
+      get :follow
+      get :unfollow
+    end
+  end
+  resources :forms do
+    resources :replies
+    resources :understands
+  end
   root 'forms#index'
+end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -65,4 +73,4 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end
+
