@@ -1,5 +1,5 @@
 class DialoguesController < ApplicationController
-    
+    before_action :set_dialogue
     def index 
         @dialogues = Dialogue.all
     end
