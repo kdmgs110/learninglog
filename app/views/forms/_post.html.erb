@@ -18,8 +18,9 @@
              <%= link_to '編集', edit_form_path(form),class:'btn btn-primary'%>
             <%= link_to '消去', form, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %>
         　<% if form.understands.present? %>
-            <%= link_to "理解", form_understand_path(form_id: form.id, id: form.understand.id), method: :delete %> <%#このリンクを押すと、ポストに紐づいた@understandがdestroyされ,nilになる %>
+            <%#<%= link_to "理解しました！", form_understand_path(form_id: form.id, id: form.understand.id), method: :delete %> <%#このリンクを押すと、ポストに紐づいた@understandがdestroyされ,nilになる %>
             <%# <%= link_to 'Delete', post_comment_path(post_id: post.id, id: comment.id), method: :delete %>
+            <button>理解しました。</button>
           <% else %>
             <%= form_for Understand.new, url: form_understands_path(form), method: :post do |f| %>
               <%= f.number_field :number %>

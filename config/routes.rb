@@ -2,11 +2,13 @@ Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   get 'users/show'
   get 'user/show'
+  
 
 
   get 'static_pages/index'
 
   devise_for :users
+  resources :dialogues
   resources :users do
     member do
       get :follow

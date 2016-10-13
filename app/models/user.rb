@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :forms
   has_many :understands
+  has_many :dialogues
   mount_uploader :photo, PhotoUploader
   acts_as_followable
   acts_as_follower

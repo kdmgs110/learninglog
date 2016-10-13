@@ -1,0 +1,14 @@
+<div class="sidebar right">
+    <h1>HELLO</h1>
+    <h1>HELLO</h1>
+    <h1>HELLO</h1>
+    <h1>HELLO</h1>
+    <h1>HELLO</h1>
+    <h1>HELLO</h1>
+    <h1>HELLO</h1>
+
+    <%= form_for Dialogue.new, url:(@dialogue), method: :post do |f| %>
+      <%= f.text_field :post %>
+      <%= f.submit 'コメントする' %>
+    <% end %>
+</div>

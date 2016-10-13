@@ -8,19 +8,46 @@
   <link rel="stylesheet" href="/javascripts/highlight/styles/[theme name of choice].min.css">
   <script src="/javascripts/highlight/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script> <!-- jQuery Slide Bar CDN -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-sidebar/3.1.0/jquery.sidebar.min.js"></script> <!-- jQuery Slide Bar CDN -->
+
   <%= csrf_meta_tags %>
 </head>
 
 <body>
   <div class="container belowHeader">
-<%= render 'layouts/header' %>
-<%= yield %>
-
+    <%= render 'layouts/header' %>
+    <%= yield %>
   </div>
+
+
+
+
+
+
+
+
+
 <script>
-CKEDITOR.replace( 'editor1', {
-    extraPlugins: 'codesnippet'
-} );
+  $(document).ready(function () {
+    // 向き
+    var sides = ["left", "top", "right", "bottom"];
+ 
+    // サイドバーの初期化
+    for (var i = 0; i < sides.length; ++i) {
+        var cSide = sides[i];
+        $(".sidebar." + cSide).sidebar({side: cSide});
+    }
+ 
+    // ボタンのクリックにより...
+    $(".btn[data-action]").on("click", function () {
+        var $this = $(this);
+        var action = $this.attr("data-action");
+        var side = $this.attr("data-side");
+        $(".sidebar." + side).trigger("sidebar:" + action);
+        return false;
+    });
+});
 </script>
 </body>
 </html>

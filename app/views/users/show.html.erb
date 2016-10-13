@@ -16,29 +16,41 @@
  <% if current_user == @users %> <%# プロフィールを編集できる %>
   <%= form_for @users do |f| %>
     
-    <%= f.label :"学習項目" %>
+    <%= f.label :"経歴"%>
     <%= f.text_area :profession %>
+    
+    <%= f.label :"教えられること"%>
+    <%= f.text_area :teachable %>
+    
+    <%= f.label :"学習中"%>
+    <%= f.text_area :learning %>
     
     <%= f.label :"自己紹介" %>
     <%= f.text_area :intro %>
+    
     <%= f.submit %>
   <% end %>  
  <% else %> <%# プロフィールは見るだけ %>
-  <h3>学習項目</h3>
+  <h3>経歴</h3>
   <p><%= @users.profession %></p>
+  <h3>教えられること</h3>
+  <p><%= @users.teachable %></p>
+  <h3>学習中</h3>
+  <p><%= @users.learning %></p>
   <h3>自己紹介</h3>
   <p><%= @users.intro %></p>
+  
 <% end %>
 <p>ノート数:<%= @users.forms.count %></p>
 
 <h3>フォロー数:<%= @users.follow_count%></h3>
 <% @users.all_following.each do |user| %>
- <%= image_tag user.photo.url,class:"micro-photo" %>
+ <%= link_to image_tag(user.photo.url,class:"micro-photo"),user %>
 <% end %>
 
 <h3>フォロワー数:<%= @users.followers_count%></h3>
 <% @users.followers.each do |user| %>
- <%= image_tag user.photo.url,class:"micro-photo" %>
+ <%= link_to image_tag(user.photo.url,class:"micro-photo"),user %>
 <% end %>
 
 <% @users.forms.each do |user| %>

@@ -3,21 +3,25 @@
      <span class="col-md-4"><%= link_to "My Coding Day", root_path,id:"logo" %></span>
      <ul class="col-md-8 navi-menu">
      <% if user_signed_in? %>
-            <li><%= link_to user_path(current_user),class:"header_icon" do %><i class="fa fa-user" aria-hidden="true"></i><% end %></li>
+            <li><%= link_to new_form_path,class:"header_icon" do %><i class="fa fa-pencil" aria-hidden="true">新規投稿</i><% end %></li>
+            <li><%= link_to forms_path,class:"header_icon" do %><i class="fa fa-newspaper-o" aria-hidden="true">タイムライン</i><% end %></li>
+            <li><%= link_to users_path,class:"header_icon" do %><i class="fa fa-user-plus" aria-hidden="true">ユーザーを探す</i><% end %></li>
+            <li><a href="#" class="btn toggle-right header_icon" data-action="toggle" data-side="right">チャット</a></li>
             <% if current_user.photo.present? %>
-            <li><%= image_tag current_user.photo.url,class:'header_image' %></li>
+            <li><%= link_to image_tag(current_user.photo,class:'header_image'),current_user %></li>
             <% else %>
-                <%= image_tag 'nouser.png',class:"header_image" %>
+                <%= link_to image_tag('nouser.png',class:'header_image'),current_user %>
             <% end %>
-            <li><%= link_to forms_path,class:"header_icon" do %><i class="fa fa-newspaper-o" aria-hidden="true"></i><% end %></li>
-            <li><%= link_to users_path,class:"header_icon" do %><i class="fa fa-user-plus" aria-hidden="true"></i><% end %></li>
+            <li><%= link_to %></li>
             <li><%= link_to '編集', edit_user_registration_path %></liser>
             <li><%= link_to 'ログアウト',destroy_user_session_path, method: :delete %></li>
-            <li><%= link_to new_form_path,class:"header_icon" do %><i class="fa fa-pencil" aria-hidden="true"></i><% end %></li>
+
       <% else %>
           <li><%= link_to '新規登録',new_user_registration_path %></li>
           <li><%= link_to 'ログイン',new_user_session_path %></li>
      <% end %>
       </ul>
 </header>
+<%= render '/shared/sidebar_right' %>
+
   

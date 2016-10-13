@@ -7,14 +7,22 @@
     margin:0 auto;
 }
 body{
+    z-index:0;
     margin:0 auto;
     margin-top:100px;
+    background-image: -moz-linear-gradient(top, #1f9dff, #26bfff);
+    background-image: -ms-linear-gradient(top, #1f9dff, #26bfff);
+    background-image: -o-linear-gradient(top, #1f9dff, #26bfff);
+    background-image: -webkit-gradient(linear, center top, center bottom, from(#1f9dff), to(#26bfff));
+    background-image: -webkit-linear-gradient(top, #1f9dff, #26bfff);
+    background-image: linear-gradient(top, #1f9dff, #26bfff);
 }
 a{
     text-decoration:none;
 }
 /* header */
 header .container{
+    z-index:2;
     background-color:#cfcfcf;
     color:black;
     width:100%;
@@ -50,10 +58,6 @@ header .li{
     margin-left:30px;
 }
 
-header .ul{
-    margin-left:30px;
-}
-
 /* belowHeader */
 
 
@@ -63,6 +67,7 @@ header .ul{
     margin:100px 0;
     border-top:1px solid grey;
     border-bottom:1px solid grey;
+    background-image:white;
 }
 
 /* forms */
@@ -93,6 +98,56 @@ header .ul{
     height:100px;
 }
 
+// bottom_bar 
+
+.sidebar{
+    position: fixed;
+     /* 好みに応じて調節してください */
+  }
+ 
+    .sidebar.left {
+    z-index:100;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 270px; /*この値は調節してください。*/
+      background: #448AFF; /*背景色も好みに応じにて調節してください。*/
+    }
+ 
+    .sidebar.right {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 270px;
+      background-color:white;
+    }
+ 
+    .sidebar.top {
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 270px;
+      background: #03A9F4;
+    }
+ 
+    .sidebar.bottom {
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 420px;
+    }
+
+.toggle_bottom i{
+    z-index:100;
+    position:fixed;
+    right:10px;
+    bottom:10px;
+    
+}
+
+
+
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -111,3 +166,4 @@ header .ul{
  *= require syntax-highlighter-rails/shCore
  *= require syntax-highlighter-rails/shThemeDefault
  */
+

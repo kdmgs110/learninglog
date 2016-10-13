@@ -1,4 +1,5 @@
 <div class="container">
+  
     <div class="title">
       <% if  @form.user.photo.present? %>
         <%= image_tag @form.user.photo.url,class:"user_photo" %>
@@ -6,8 +7,12 @@
         <%= image_tag 'nouser.png',class:"user_photo" %>
       <% end %>
         
-      <%= @form.user.name %>
-      <%= @form.title %>
+      <h3><%= @form.user.name %></h3>
+      <ul>
+        <li><a href="#" class="btn toggle-bottom header_icon" data-action="toggle" data-side="bottom"><i class="fa fa-video-camera toggle-bottom" aria-hidden="true"></i>動画で質問</a></li>
+        
+      
+      <h3><%= @form.title %></h3>
       <p><%= time_ago_in_words @form.created_at %>前に投稿</p>
     </div>
     <div class="content">
@@ -32,8 +37,10 @@
       <%= f.cktext_area :content %>
       <%= f.submit 'コメントする' %>
     <% end %>
-    
-  
 </div>
 
+
+<div class="sidebar bottom">
+  <iframe src="https://appear.in/sophist" width="800" height="640" frameborder="0"></iframe>
+</div>
 

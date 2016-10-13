@@ -1,13 +1,15 @@
 <h1>ユーザー検索</h1>
   <%= search_form_for @q do |f| %>
-      <%= f.label :name_cont, "ユーザー検索"%><%= f.search_field :name_cont %>
-      <%= f.submit %>
-      
-      <%= f.label :profession_cont, "学習項目から検索"%><%= f.search_field :profession_cont %>
-      <%= f.submit %>
+      <div><%= f.label :name_cont, "ユーザー名から検索"%><%= f.search_field :name_cont %></div>
+      <div><%= f.label :profession_cont, "経歴から検索"%><%= f.search_field :profession_cont %></div>
+      <div><%= f.label :teachable_cont, "教えられることから検索"%><%= f.search_field :teachable_cont %></div>
+      <div><%= f.label :learning_cont, "学習中から検索"%><%= f.search_field :learning_cont %></div>
+      <div><%= f.submit %>
 
   <% end %>
-  
+
+<h1>ユーザー検索結果</h1>
+
 <% @users.each do |user| %>
     <div class="col-md-10 col-md-offset-1"><p><%= link_to user.name,user_path(user)%></p></div>
         <% if user.photo.present? %>
@@ -22,6 +24,8 @@
             <div class="col-md-10 col-md-offset-1"><%= link_to "Follow", follow_user_path(user) %></div>
        <% end %>
     <% end %> 
+    <div class="col-md-10 col-md-offset-1">フォロー数:<%= user.follow_count %></div>
+    <div class="col-md-10 col-md-offset-1">フォロワー数:<%= user.followers_count %></div>
 <% end %>
 
            
