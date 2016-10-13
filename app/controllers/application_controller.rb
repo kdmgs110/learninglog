@@ -4,7 +4,10 @@ class ApplicationController < ActionController::Base
   def set_search
     @q=Form.search(params[:q])
   end
-    
+  
+  def set_dialogue
+    @dialogues = Dialogue.all.order("Created_at DESC")
+  end
   
 
   

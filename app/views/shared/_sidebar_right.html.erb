@@ -1,11 +1,11 @@
 <div class="sidebar right">
-    <h1>HELLO</h1>
-    <h1>HELLO</h1>
-    <h1>HELLO</h1>
-    <h1>HELLO</h1>
-    <h1>HELLO</h1>
-    <h1>HELLO</h1>
-    <h1>HELLO</h1>
+    <h1>チャット</h1>
+    <div class ="dialogue_container" >
+        <% @dialogues.each do |d| %>
+            <p>ユーザー：<%= d.user.name %>|<%= time_ago_in_words d.created_at %>前に投稿</p>
+            <p><%= d.post %></p> 
+        <% end %>
+    </div>
 
     <%= form_for Dialogue.new, url:(@dialogue), method: :post do |f| %>
       <%= f.text_field :post %>
