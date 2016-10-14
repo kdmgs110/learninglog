@@ -2,7 +2,7 @@
 
 class FormsController < ApplicationController
   before_action :set_form, only: [:show, :edit, :update, :destroy]
-  before_filter :set_search
+  before_filter :set_search 
   before_action :set_dialogue
   
   before_action :authenticate_user!, only: [:new, :create]
