@@ -2,7 +2,7 @@
 class DeviseController < Devise.parent_controller.constantize
   include Devise::Controllers::ScopedViews
   
-  before_action :set_dialogue
+  #before_action :set_dialogue
 
   if respond_to?(:helper)
     helper DeviseHelper

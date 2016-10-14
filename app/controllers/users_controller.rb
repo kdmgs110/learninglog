@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_dialogue
+  #before_action :set_dialogue
   
   def index
     @q = User.search(params[:q])
