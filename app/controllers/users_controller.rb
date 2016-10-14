@@ -17,8 +17,6 @@ class UsersController < ApplicationController
   end
   
   def update
-    puts '@@@@@@@@@@@'
-    puts 'params[:id]'
     @user = User.find(current_user)
     if @user.update(user_params)
       redirect_to @user
