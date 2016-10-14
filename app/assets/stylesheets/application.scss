@@ -31,6 +31,8 @@ header .container{
 #logo{
     text-decoration:none;
     color:white;
+    font-family: 'Shadows Into Light', cursive;
+    font-size:30px;
 }
 .white{
     color:white;
@@ -160,6 +162,7 @@ header .li{
       width: 400px;
       background-color:white;
       overflow:scroll;
+      z-index:100;
     }
 
 
