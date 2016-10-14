@@ -1,5 +1,5 @@
 class UnderstandsController < ApplicationController
-    
+    before_action :set_dialogue
     def create
     @forms = Form.find(params[:form_id])
     @understands = @forms.understands.create(understand_params.merge(user_id:current_user.id)) 
