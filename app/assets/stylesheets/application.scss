@@ -114,12 +114,8 @@ header .li{
       background: #448AFF; /*背景色も好みに応じにて調節してください。*/
     }
  
-    .sidebar.right {
-      top: 0;
-      right: 0;
-      bottom: 0;
-      width: 270px;
-      background-color:white;
+    .dialogue_textarea{
+        height:700px;
     }
  
     .sidebar.top {
@@ -144,6 +140,27 @@ header .li{
     bottom:10px;
     
 }
+
+/* sidebar right */
+.dialogue_container{
+    padding:10px 10px;
+    border:1px solid black;
+    margin:10px 0;
+}
+.dialogue_text{
+    border:1px solid #ccc;
+    padding:5px 20px;
+    
+}
+.sidebar.right {
+      margin-top:60px;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 400px;
+      background-color:white;
+      overflow:scroll;
+    }
 
 
 

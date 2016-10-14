@@ -1,14 +1,18 @@
-<div class="sidebar right">
+<div class="sidebar right " scrolling= "auto">
     <h1>チャット</h1>
-    <div class ="dialogue_container" >
-        <% @dialogues.each do |d| %>
-            <p>ユーザー：<%= d.user.name %>|<%= time_ago_in_words d.created_at %>前に投稿</p>
-            <p><%= d.post %></p> 
-        <% end %>
-    </div>
-
+    
     <%= form_for Dialogue.new, url:(@dialogue), method: :post do |f| %>
       <%= f.text_field :post %>
       <%= f.submit 'コメントする' %>
     <% end %>
+    
+        <% @dialogues.each do |d| %>
+            <div class ="dialogue_container" >
+                <p>ユーザー：<%= d.user.name %>|<%= time_ago_in_words d.created_at %>前に投稿</p>
+                <div class="dialogue_text">
+                    <p><%= d.post %></p>
+                </div>
+            </div>
+        <% end %>
+
 </div>
