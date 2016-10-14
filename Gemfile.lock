@@ -368,7 +368,7 @@ DEPENDENCIES
   pg (= 0.17.1)
   rails (= 4.2.5)
   rails-i18n
-  rails_12factor (= 0.0.2)
+  rails_12factor
   ransack
   rmagick
   sass-rails (~> 5.0)
