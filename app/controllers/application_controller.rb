@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     @dialogues = Dialogue.all.order("Created_at DESC")
   end
   
-
+  
   
   protect_from_forgery with: :exception
 
