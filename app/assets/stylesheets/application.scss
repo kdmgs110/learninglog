@@ -100,7 +100,7 @@ header .li{
     height:100px;
 }
 
-// bottom_bar 
+// sidebar bottom 
 
 .sidebar{
     position: fixed;
@@ -134,12 +134,21 @@ header .li{
       bottom: 0;
       height: 420px;
     }
+    #video-button{
+    top:60px;
+    left:50px;
+    position:fixed;
+    font-size:60px
 
-.toggle_bottom i{
+    }
+
+
+    .toggle_bottom i{
     z-index:100;
     position:fixed;
     right:10px;
     bottom:10px;
+    font-size:60px
     
 }
 
