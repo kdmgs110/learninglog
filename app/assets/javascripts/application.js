@@ -8,3 +8,4 @@
 //= require syntax-highlighter-rails/shCore
 //= require syntax-highlighter-rails/shBrushCpp
 //= require ckeditor/config
+

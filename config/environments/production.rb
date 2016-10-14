@@ -1,4 +1,11 @@
 Rails.application.configure do
+  
+  
+  # following direction here http://paranishian.hateblo.jp/entry/2015/10/08/175707
+  config.assets.precompile += Ckeditor.assets
+  config.assets.precompile += %w( ckeditor/* )
+  config.autoload_paths += %W
+(#{config.root}/app/models/ckeditor)
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
