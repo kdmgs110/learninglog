@@ -5,10 +5,11 @@ class RepliesController < ApplicationController
         @forms = Form.find(params[:form_id])
         @replies = @forms.replies.create(reply_params.merge(user_id: current_user.id))
         if @replies.valid?
-        redirect_to root_path
+            # インデントするように
+            redirect_to root_path
         else
-        flash[:alert] = "Invalid attributes."
-        redirect_to root_path
+            flash[:alert] = "Invalid attributes."
+            redirect_to root_path
         end
     end
     

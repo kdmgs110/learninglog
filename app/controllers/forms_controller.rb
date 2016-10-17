@@ -86,6 +86,7 @@ class FormsController < ApplicationController
     end
     
     def is_owener?
+      # redirect_to root_path if Form.find(params[:id]).user != current_user に短縮できる
       if Form.find(params[:id]).user != current_user
         redirect_to root_path
       end

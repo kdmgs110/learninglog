@@ -16,6 +16,7 @@
  <% if current_user == @users %> <%# プロフィールを編集できる %>
   <%= form_for @users do |f| %>
     
+    <!-- ここのラベルsymbolにしてる理由は? ":"経歴" -->
     <%= f.label :"経歴"%>
     <%= f.text_area :profession %>
     
