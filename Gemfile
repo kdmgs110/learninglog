@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+gem 'omniauth'
+gem 'pusher'
 gem 'rails_12factor', group: :production
 gem "acts_as_follower"
 gem 'rails-i18n'

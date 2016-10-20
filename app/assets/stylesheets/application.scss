@@ -40,6 +40,7 @@ header .container{
 
 iframe{
     width:100%;
+    height:auto;
 }
 
 .navi-menu li{
@@ -118,6 +119,10 @@ header .li{
  
     .dialogue_textarea{
         height:700px;
+    }
+    .dialogue_textarea{
+        width:400px;
+        height:auto;
     }
  
     .sidebar.top {

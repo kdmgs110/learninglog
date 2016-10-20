@@ -2,17 +2,21 @@
 <div class="sidebar right " scrolling= "auto">
     <h1>チャット</h1>
     
-    <%= form_for Dialogue.new, url:(@dialogue), method: :post do |f| %>
-      <%= f.text_field :post %>
+    <%= form_for Dialogue.new, url:(@dialogue), method: :post , :remote => true  do |f| %>
+      <%= f.text_area :post,class:"text"%>
          <%= f.submit 'コメントする'  %>
          <% end %>
     
         <% @dialogues.each do |d| %>
-            <div class ="dialogue_container" >
-                <p>ユーザー：<%= d.user.name %><%= time_ago_in_words d.created_at %>前に投稿</p>
-                <div class="dialogue_text">
-                    <p><%= d.post %></p>
+            
+                <% if d.user == current_user || current_user.all_following || current_user.followers %>
+                <div class ="dialogue_container" >
+                    <%= image_tag d.user.photo %>
+                    <p>ユーザー：<%= d.user.name %><%= time_ago_in_words d.created_at %>前に投稿</p>
+                    <div class="dialogue_text">
+                        <p><%= d.post %></p>
                 </div>
+                <% end %>
             </div>
         <% end %>
 </div>

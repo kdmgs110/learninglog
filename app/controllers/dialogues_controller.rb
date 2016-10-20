@@ -4,6 +4,13 @@ class DialoguesController < ApplicationController
         @dialogues = Dialogue.all
     end
     
+    def post
+        Pusher['general_channel'].trigger('chat_event', {
+        message: params[:message]
+        })
+        render :text => 'OK', :status => 200
+    end
+    
     def create
         @users = current_user
         @dialogues = @users.dialogues.create(dialogue_params.merge(user_id: current_user.id))
