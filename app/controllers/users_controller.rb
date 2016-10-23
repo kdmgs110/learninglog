@@ -7,6 +7,8 @@ class UsersController < ApplicationController
   end
   
   def show
+    # ここはeager loading使う
+    # @users = User.find(params[:id]).includes(:forms)
     @users = User.find(params[:id])
   end
   

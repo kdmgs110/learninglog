@@ -1,11 +1,13 @@
 class UnderstandsController < ApplicationController
     before_action :set_dialogue
     def create
-    @forms = Form.find(params[:form_id])
-    @understands = @forms.understands.create(understand_params.merge(user_id:current_user.id)) 
+        #️インデントするように
+        @forms = Form.find(params[:form_id])
+        @understands = @forms.understands.create(understand_params.merge(user_id:current_user.id)) 
         if @understands.valid?
             redirect_to root_path
         else
+            # www
              flash[:alert] = "死んでくれよ"
              redirect_to root_path
         end
